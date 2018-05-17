@@ -1,5 +1,5 @@
 <?php
-class Kruh
+class Kruh implements DvourozmernyObrazec
 {
 	private $polomer;
 

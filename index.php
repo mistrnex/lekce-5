@@ -1,10 +1,34 @@
 <?php
+require 'Programators/Objekty/DvourozmerneObjekty/DvourozmernyObrazec.php';
+require 'Programators/Objekty/DvourozmerneObjekty/TrojrozmernyObrazec.php';
+require 'Programators/Objekty/DvourozmerneObjekty/Kvadr.php';
+require 'Programators/Objekty/DvourozmerneObjekty/Krychle.php';
 require 'Programators/Objekty/DvourozmerneObjekty/Obdelnik.php';
+require 'Programators/Objekty/DvourozmerneObjekty/Koule.php';
+require 'Programators/Objekty/DvourozmerneObjekty/RotacniKuzel.php';
+require 'Programators/Objekty/DvourozmerneObjekty/Jehlan.php';
 
 require 'Programators/Objekty/DvourozmerneObjekty/Kruh.php';
 require 'Programators/Objekty/DvourozmerneObjekty/Ctverec.php';
-require 'Programators/Objekty/DvourozmerneObjekty/DvourozmernyObrazec.php';
+
+require 'Programators/Objekty/DvourozmerneObjekty/PravouhlyTrojuhelnik.php';
+require 'Programators/Objekty/DvourozmerneObjekty/Mnohouhelnik.php';
+require 'Programators/Objekty/DvourozmerneObjekty/Sedmiuhelnik.php';
+
+function vypisObsah(DvourozmernyObrazec $obrazec) {
+  echo $obrazec->ziskejObsah();
+  }
+  
+  function vypisObjem(TrojrozmernyObrazec $obrazec) {
+  echo $obrazec->ziskejObjem();
+    }
+    
+      function vypisPovrch(TrojrozmernyObrazec $obrazec) {
+  echo $obrazec->ziskejPovrch();
+    
+}
 ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -37,7 +61,7 @@ require 'Programators/Objekty/DvourozmerneObjekty/DvourozmernyObrazec.php';
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="/lekce-5/index2.php">About</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Contact</a>
@@ -57,10 +81,7 @@ require 'Programators/Objekty/DvourozmerneObjekty/DvourozmernyObrazec.php';
         </div>
       </div>
 
-      <?php
-      
-      
-      ?>
+
       
       <?php
         $obdelnik = new Obdelnik(5, 7);
@@ -72,31 +93,107 @@ require 'Programators/Objekty/DvourozmerneObjekty/DvourozmernyObrazec.php';
       var_dump($obdelnik3);
       ?>
       <?php
-        $kruh = new Kruh(5);
+        $kruh = new Kruh(10);
+          $kruh2 = new Kruh(5);
       $ctverec = new Ctverec(10);
-   
-    
+   $trojuhelnik= new PravouhlyTrojuhelnik(3,4,5);
+       $mnohouhelnik= new Mnohouhelnik(50,7);
+      $sedmiuhelnik= new Sedmiuhelnik(50);
+    $kvadr = new Kvadr(10,5,1);
+      $krychle = new Krychle (5);
+      $koule= new Koule(10);
+      $rotacniKuzel= new RotacniKuzel(8,5);
+      $jehlan= new Jehlan(10);
        ?>
  
      
        <h1>
-       <?=$kruh->ziskejObsah()?>
+       <?=$kruh->ziskejObsah();
+         ?>
       </h1> 
+            <h1> Kvádr:
+       <?=$kvadr->ziskejObjem();
+         ?>
+               <br> <?=$kvadr->ziskejPovrch();
+         ?>
+      </h1> 
+        <h2> Krychle:
+       <?=$krychle->ziskejObjem();
+         ?>
+               <br> <?=$krychle->ziskejPovrch();
+         ?>
+      </h2> 
+      
+      <h2> Krychle - vypiš:
+       <?= vypisObjem($krychle);
+         ?>
+               <br> <?= vypisPovrch($krychle);
+         ?>
+      </h2> 
+       <h2> Koule:
+       <?=$koule->ziskejObjem();
+         ?>
+               <br> <?=$koule->ziskejPovrch();
+         ?>
+      </h2> 
+      <h2> Rotační kužel:
+       <?=$rotacniKuzel->ziskejObjem();
+         ?>
+               <br> <?=$rotacniKuzel->ziskejPovrch();
+         ?>
+      </h2> 
+      
+      <h2> Jehlan - vypiš:
+       <?= vypisObjem($jehlan);
+         ?>
+               <br> <?= vypisPovrch($jehlan);
+         ?>
+      </h2> 
+             <h1> Vypis obsah - kruh:
+       <?=vypisObsah($kruh);
+         ?>
+      </h1> 
+       <h1> Vypis obsah - kruh:
+       <?=vypisObsah($kruh2);
+         ?>
+      </h1> 
+      
+       <h1> Vypis obsah - čtverec:
+       <?=vypisObsah($ctverec);
+         ?>
+      </h1> 
+      
+             <h1>Trojúhelník-
+       <?=$trojuhelnik->ziskejObsah();
+         ?>
+      </h1> 
+      
+       <h1>
+         Mnohoúhelník:
+       <?=$mnohouhelnik->ziskejObsah();
+         ?>
+      </h1> 
+      
+       <h1>
+         Sedmiúhelník:
+       <?=$sedmiuhelnik->ziskejObsah();
+         ?>
+      </h1>
       
       <div class="container">
         <h1>Obdelník</h1>
         <table class="table">
           <tr>
             <th>Strana A</th>
-            <td><?=$obdelnik->ziskejStranuA()?></td>
+            <td><?=$obdelnik->ziskejStranuA(); ?></td>
           </tr>
           <tr>
             <th>Strana B</th>
-            <td><?=$obdelnik->ziskejStranuB()?></td>
+            <td><?=$obdelnik->ziskejStranuB(); ?></td>
           </tr>
           <tr>
             <th>Obsah</th>
-            <td><?=$obdelnik->ziskejObsah()?></td>
+            <td><?= vypisObsah($obdelnik2); ?></td>
           </tr>
         </table>
       </div>
@@ -106,12 +203,12 @@ require 'Programators/Objekty/DvourozmerneObjekty/DvourozmernyObrazec.php';
         <table class="table">
           <tr>
             <th>Poloměr</th>
-            <td><?=$obdelnik->ziskejStranuA()?></td>
+            <td><?=$obdelnik->ziskejStranuA(); ?></td>
           </tr>
   
           <tr>
             <th>Obsah</th>
-            <td><?=$kruh->ziskejObsah()?></td>
+            <td><?=$kruh->ziskejObsah(); ?></td>
           </tr>
         </table>
       </div>
@@ -126,7 +223,7 @@ require 'Programators/Objekty/DvourozmerneObjekty/DvourozmernyObrazec.php';
   
           <tr>
             <th>Obsah</th>
-            <td><?=$ctverec->ziskejObsah()?></td>
+            <td><?=$ctverec->ziskejObsah(); ?></td>
           </tr>
         </table>
       </div>

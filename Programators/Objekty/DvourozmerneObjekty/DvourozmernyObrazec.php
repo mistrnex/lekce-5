@@ -1,11 +1,7 @@
 <?php
-interface DvourozmernyObrazec
-  
-{
+interface DvourozmernyObrazec {
   public function ziskejObsah();
-
 }
-
 
 
 
